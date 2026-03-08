@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Restaurant AI Assistant</title>
+  <title>Restaurant AI</title>
 </head>
 
 <body>
+  <h1>Welcome</h1>
+  <p>This is my site.</p>
 
-<h1>Restaurant AI Handbook Assistant</h1>
-<p>Ask any question about the employee handbook.</p>
+  <script type="module">
+    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js";
 
-<!-- Flowise Chatbot -->
-<script type="module">
-import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
-
-Chatbot.init({
-  chatflowid: "46680cc0-effe-4e85-962f-5dc6a21cbdd1",
-  apiHost: "https://cloud.flowiseai.com"
-})
-</script>
+    Chatbot.init({
+      chatflowid: "b514668c-de34-4d8d-a619-daba68ecd284",
+      apiHost: "https://cloud.flowiseai.com"
+    });
+  </script>
 
 </body>
 </html>
