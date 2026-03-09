@@ -1,208 +1,313 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Employee Handbook Assistant</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
 
-<title>Employee Handbook Assistant</title>
+    .page-shell {
+      width: 100%;
+      max-width: 1100px;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 32px;
+      align-items: center;
+    }
 
-<style>
+    .content-panel {
+      padding: 8px 8px 8px 0;
+    }
 
-*{
-box-sizing:border-box;
-}
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #e8f0fe;
+      color: #1d4ed8;
+      font-size: 14px;
+      font-weight: 700;
+    }
 
-body{
-margin:0;
-font-family:Arial, Helvetica, sans-serif;
-background:#f4f6fb;
-color:#111;
-}
+    h1 {
+      margin: 0 0 14px;
+      font-size: 42px;
+      line-height: 1.1;
+      color: #111827;
+    }
 
-.wrapper{
-max-width:1200px;
-margin:auto;
-padding:40px 20px;
-}
+    .subtitle {
+      margin: 0 0 24px;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #4b5563;
+      max-width: 620px;
+    }
 
-.hero{
-text-align:center;
-margin-bottom:60px;
-}
+    .feature-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
 
-.badge{
-display:inline-block;
-background:#e6f0ff;
-color:#1d4ed8;
-padding:6px 14px;
-border-radius:30px;
-font-size:14px;
-margin-bottom:12px;
-}
+    .feature-item {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 14px 16px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+      color: #374151;
+      font-size: 15px;
+    }
 
-.hero h1{
-font-size:44px;
-margin:10px 0;
-}
+    .chat-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 22px;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+      overflow: hidden;
+      min-height: 720px;
+      position: relative;
+    }
 
-.hero p{
-font-size:18px;
-color:#555;
-max-width:650px;
-margin:auto;
-}
+    .chat-frame-header {
+      padding: 18px 20px;
+      border-bottom: 1px solid #e5e7eb;
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+      color: #ffffff;
+    }
 
-.main{
-display:grid;
-grid-template-columns:1fr 460px;
-gap:60px;
-align-items:center;
-}
+    .chat-frame-title {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+    }
 
-.features{
-margin-top:20px;
-}
+    .chat-frame-subtitle {
+      margin: 6px 0 0;
+      font-size: 13px;
+      opacity: 0.92;
+    }
 
-.feature{
-background:white;
-padding:16px;
-border-radius:12px;
-margin-bottom:14px;
-box-shadow:0 4px 12px rgba(0,0,0,0.06);
-}
+    #flowise-chat-container {
+      height: 650px;
+      position: relative;
+      background: #f9fafb;
+    }
 
-.feature strong{
-display:block;
-margin-bottom:4px;
-}
+    @media (max-width: 900px) {
+      .page-shell {
+        grid-template-columns: 1fr;
+      }
 
-.chatbox{
-background:white;
-border-radius:20px;
-overflow:hidden;
-box-shadow:0 10px 30px rgba(0,0,0,0.15);
-}
+      .content-panel {
+        padding-right: 0;
+      }
 
-.chat-header{
-background:#2563eb;
-color:white;
-padding:16px;
-font-weight:bold;
-text-align:center;
-}
+      h1 {
+        font-size: 34px;
+      }
 
-#flowise-chat{
-height:640px;
-}
+      .chat-card {
+        min-height: auto;
+      }
 
-.footer{
-text-align:center;
-margin-top:60px;
-color:#777;
-font-size:14px;
-}
+      #flowise-chat-container {
+        height: 650px;
+      }
+    }
 
-@media(max-width:900px){
+    @media (max-width: 520px) {
+      body {
+        padding: 14px;
+      }
 
-.main{
-grid-template-columns:1fr;
-}
+      h1 {
+        font-size: 28px;
+      }
 
-.hero h1{
-font-size:34px;
-}
+      .subtitle {
+        font-size: 16px;
+      }
 
-}
+      .chat-card {
+        border-radius: 18px;
+      }
 
-</style>
-
+      #flowise-chat-container {
+        height: 78vh;
+        min-height: 560px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="page-shell">
+    <section class="content-panel">
+      <div class="eyebrow">AI HR Support</div>
+      <h1>Employee Handbook Assistant</h1>
+      <p class="subtitle">
+        Ask questions about attendance, time off, conduct, scheduling, uniforms,
+        discipline, or any other handbook policy and get a fast answer.
+      </p>
 
-<div class="wrapper">
+      <div class="feature-list">
+        <div class="feature-item">Instant answers to handbook questions</div>
+        <div class="feature-item">Simple employee-friendly chat experience</div>
+        <div class="feature-item">Modern interface for restaurant teams</div>
+      </div>
+    </section>
 
-<div class="hero">
+    <section class="chat-card">
+      <div class="chat-frame-header">
+        <h2 class="chat-frame-title">Handbook Chat</h2>
+        <p class="chat-frame-subtitle">Ask a policy question below</p>
+      </div>
+      <div id="flowise-chat-container"></div>
+    </section>
+  </div>
 
-<div class="badge">
-AI HR Support
-</div>
+  <script type="module">
+    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js";
 
-<h1>
-Employee Handbook Assistant
-</h1>
+    Chatbot.initFull({
+      chatflowid: "46680cc0-effe-4e85-962f-5dcba21cbdd1",
+      apiHost: "https://cloud.flowiseai.com",
+      theme: {
+        chatWindow: {
+          welcomeMessage: "Hi there! Ask me anything about the employee handbook.",
+          backgroundColor: "#f9fafb",
+          height: 650,
+          width: 420,
+          fontSize: 15,
+          starterPrompts: [
+            "What is the attendance policy?",
+            "How do I report being late?",
+            "What happens after repeated absences?"
+          ],
+          botMessage: {
+            backgroundColor: "#ffffff",
+            textColor: "#111827",
+            showAvatar: true
+          },
+          userMessage: {
+            backgroundColor: "#2563eb",
+            textColor: "#ffffff",
+            showAvatar: false
+          },
+          textInput: {
+            placeholder: "Type your handbook question...",
+            backgroundColor: "#ffffff",
+            textColor: "#111827",
+            sendButtonColor: "#2563eb"
+          },
+          footer: {
+            textColor: "#6b7280",
+            company: "Employee Handbook Assistant",
+            companyLink: "https://restaurant-ai-assistant-one.vercel.app/"
+          }
+        },
+        customCSS: `
+          flowise-fullchatbot {
+            width: 100% !important;
+            height: 100% !important;
+            display: block !important;
+          }
 
-<p>
-Ask questions about attendance, time off, scheduling, conduct,
-discipline, uniforms, or any other company policy and receive
-an instant answer.
-</p>
+          .chatbot-container {
+            width: 100% !important;
+            height: 100% !important;
+            max-width: 100% !important;
+            max-height: 100% !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            border: none !important;
+          }
 
-</div>
+          .chatbot-header {
+            display: none !important;
+          }
 
-<div class="main">
+          .chatbot-body {
+            padding: 16px !important;
+            background: #f9fafb !important;
+          }
 
-<div>
+          .user-message,
+          .bot-message {
+            border-radius: 16px !important;
+            line-height: 1.5 !important;
+            font-size: 14px !important;
+          }
 
-<div class="features">
+          .user-message {
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.18) !important;
+          }
 
-<div class="feature">
-<strong>Instant Answers</strong>
-Employees can ask questions and get answers immediately from the handbook.
-</div>
+          .bot-message {
+            border: 1px solid #e5e7eb !important;
+            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06) !important;
+          }
 
-<div class="feature">
-<strong>Reduces Manager Interruptions</strong>
-Common HR questions are answered automatically.
-</div>
+          .chatbot-input {
+            border-top: 1px solid #e5e7eb !important;
+            background: #ffffff !important;
+            padding: 14px !important;
+          }
 
-<div class="feature">
-<strong>Easy for Employees</strong>
-No searching through PDFs or long documents.
-</div>
+          .chatbot-input textarea,
+          .chatbot-input input {
+            border: 1px solid #d1d5db !important;
+            border-radius: 14px !important;
+            padding: 12px 14px !important;
+            font-size: 14px !important;
+            outline: none !important;
+            box-shadow: none !important;
+          }
 
-<div class="feature">
-<strong>Modern AI Experience</strong>
-Simple chat interface designed for restaurant teams.
-</div>
+          .chatbot-input textarea:focus,
+          .chatbot-input input:focus {
+            border-color: #2563eb !important;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12) !important;
+          }
 
-</div>
+          .chatbot-input button {
+            border-radius: 12px !important;
+          }
 
-</div>
+          .starter-prompts button {
+            border-radius: 999px !important;
+            border: 1px solid #dbeafe !important;
+            background: #eff6ff !important;
+            color: #1d4ed8 !important;
+          }
 
-<div class="chatbox">
+          .starter-prompts button:hover {
+            background: #dbeafe !important;
+          }
+        `
+      }
+    });
 
-<div class="chat-header">
-Ask the Handbook
-</div>
-
-<div id="flowise-chat"></div>
-
-</div>
-
-</div>
-
-<div class="footer">
-
-Employee Handbook AI Assistant
-
-</div>
-
-</div>
-
-<script type="module">
-
-import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js";
-
-Chatbot.initFull({
-chatflowid: "46680cc0-effe-4e85-962f-5dcba21cbdd1",
-apiHost: "https://cloud.flowiseai.com"
-});
-
-</script>
-
+    const mount = document.getElementById("flowise-chat-container");
+    const chatbotEl = document.createElement("flowise-fullchatbot");
+    mount.appendChild(chatbotEl);
+  </script>
 </body>
-
 </html>
